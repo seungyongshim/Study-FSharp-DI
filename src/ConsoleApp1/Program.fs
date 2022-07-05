@@ -13,8 +13,17 @@ let readFromConsole =
     ReadLn ((), fun str2 ->
     Stop (str1, str2)))))
 
-let interpretInstruction instruction =
+let rec interpret instruction =
     match instruction with
-    | ReadLn -> Console.ReadLine()
-    | WriteLn str -> printfn $"{str}"
+    | ReadLn (_, next) ->
+        let str = Console.ReadLine()
+        let nextInstruction = next str
+        interpret nextInstruction
+    | WriteLn (str, next) ->
+        printfn $"{str}"
+        let nextInstruction  =  next ()
+        interpret nextInstruction
+    | Stop value ->
+        value
 
+let _ = interpret readFromConsole
