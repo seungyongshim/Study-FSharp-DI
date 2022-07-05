@@ -28,6 +28,10 @@ csharp_using_directive_placement=outside_namespace:warning
 [*.sln]
 indent_style = tab
 
+[*.fs]
+indent_style = space
+indent_size = 2
+
 # Visual Studio XML Project Files
 [*.{csproj,vbproj,vcxproj.filters,proj,projitems,shproj}]
 indent_size = 2
@@ -38,7 +42,7 @@ indent_size = 2
 
 # JSON Files
 [*.{json,json5,webmanifest}]
-indent_size = 2
+indent_size = 2.
 
 # YAML Files
 [*.{yml,yaml}]
